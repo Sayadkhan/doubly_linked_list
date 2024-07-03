@@ -42,6 +42,22 @@ void insart_at_postion(Node *head, int pos, int value)
   Newnode->prev = tmp;
 }
 
+void insart_head(Node *&head Node *&tail int value)
+{
+  Node *Newnode = new Node(value);
+  if (head == NULL)
+  {
+    Newnode = head;
+    Newnode = tail;
+    return;
+  }
+
+  Newnode->next = head;
+  head->prev = Newnode;
+
+  head = Newnode;
+}
+
 void print_revarse_linked_list(Node *tail)
 {
 
@@ -73,7 +89,14 @@ int main()
 
   cin >> pos >> value;
 
-  insart_at_postion(head, pos, value);
+  if (pos == 0)
+  {
+    insart_head(head, tail, value);
+  }
+  else
+  {
+    insart_at_postion(head, pos, value);
+  }
 
   print_linked_list(head);
   print_revarse_linked_list(tail);
